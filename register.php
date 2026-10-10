@@ -15,21 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm  = $_POST['confirmPassword'] ?? '';
     $old = ['username' => $username, 'email' => $email, 'phone' => $phone];
 
-    // Username: letters, numbers, underscore, 7-10 chars
     if ($username === '') {
         $errors['username'] = 'Please enter a username';
     } elseif (!preg_match('/^[A-Za-z0-9_]{7,10}$/', $username)) {
         $errors['username'] = 'Username must be 7 to 10 characters (letters, numbers, underscore only)';
     }
 
-    // Email
     if ($email === '') {
         $errors['email'] = 'Please enter your email';
     } elseif (!preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $email)) {
         $errors['email'] = 'Enter a valid email (e.g. name@gmail.com)';
     }
 
-    // PH mobile number: 09XXXXXXXXX or +639XXXXXXXXX
     if ($phone === '') {
         $errors['phone'] = 'Please enter your phone number';
     } elseif (!preg_match('/^(09|\+639)\d{9}$/', $phone)) {
@@ -38,21 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['phone'] = 'Phone number looks fake (repeated digits)';
     }
 
-    // Password 7-12 chars
     if ($password === '') {
         $errors['password'] = 'Please enter a password';
     } elseif (!preg_match('/^.{7,12}$/', $password)) {
         $errors['password'] = 'Password must be 7 to 12 characters';
     }
 
-    // Confirm password
     if ($confirm === '') {
         $errors['confirmPassword'] = 'Please confirm your password';
     } elseif ($confirm !== $password) {
         $errors['confirmPassword'] = 'Passwords do not match';
     }
 
-    // Check kung may kapareho na
     if (empty($errors)) {
         $users = load_users();
         $uname = strtolower($username);
