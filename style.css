@@ -118,7 +118,6 @@ body {
   font-weight: bold;
 }
 
-/* jQuery validation messages */
 label.error {
   display: block;
   text-align: left;
