@@ -198,7 +198,6 @@ button:focus-visible {
   margin: 0;
 }
 
-/* GALLERY */
 .gallery-section {
   background: var(--ink);
   color: var(--parchment);
@@ -230,7 +229,6 @@ button:focus-visible {
 .gallery-frame:hover img,
 .gallery-frame:focus-within img { transform: scale(1.04); }
 
-/* FOOTER */
 footer {
   background: var(--ink);
   color: var(--muted);
