@@ -15,7 +15,6 @@ $username = '';
 
 $_SESSION['attempts'] = $_SESSION['attempts'] ?? 0;
 
-// Tapos na ba ang lock?
 if (isset($_SESSION['lockUntil']) && $_SESSION['lockUntil'] <= time()) {
     unset($_SESSION['lockUntil']);
     $_SESSION['attempts'] = 0;
@@ -26,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$locked) {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    // Regex validation
     if ($username === '') {
         $errors['username'] = 'Please enter your username';
     } elseif (!preg_match('/^[A-Za-z0-9_.@-]{3,50}$/', $username)) {
@@ -72,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$locked) {
 if ($locked) {
     $left = $_SESSION['lockUntil'] - time();
     $message = "Too many failed attempts. Try again in $left seconds.";
-    header('Refresh: 5'); // auto-refresh para mawala ang lock pagkatapos
+    header('Refresh: 5'); 
 }
 
 $pageTitle = 'Log In';
