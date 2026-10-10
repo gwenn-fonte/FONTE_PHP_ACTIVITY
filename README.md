@@ -21,6 +21,3 @@ screenshots/         code and output screenshots
 2. Start Apache in XAMPP
 3. Open `http://localhost/<folder-name>/login.php`
 4. Test login: `admin` / `12345`, or register a new account
-
-## Screenshots
-(Add your screenshots here)
